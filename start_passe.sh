@@ -1,12 +1,11 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-# Version avec affichage du temps réel
+# Version finale – avec module temps séparé
 
-solved=0         # 0 = pas résolu, 1 = énigme résolue
+solved=0  # 0 = pas résolu, 1 = énigme résolue
 
-# Durée réelle du niveau (en secondes)
-duration=$((10 * 60))   # 10 minutes réelles 
-start_time=$(date +%s) # Heure réelle du lancement
+# Initialisation du temps (fichier caché pour garder la valeur)
+date +%s > .start_time
 
 # ───────────────────────────────
 # Fonctions
@@ -20,6 +19,8 @@ afficher_intro() {
   echo "Vous venez d'apparaître dans un salon victorien poussiéreux."
   echo "Une grande horloge gothique trône au centre de la pièce."
   echo "Son tic-tac s'est arrêté..."
+  echo
+  echo "⏳ Vous avez 10 minutes réelles pour sauver le passé."
   echo
   echo "> Tapez 'help' pour obtenir la liste des commandes."
   echo
@@ -60,25 +61,8 @@ afficher_ls() {
   echo
 }
 
-# ───────────────────────────────
-# Fonction temps réel
-# ───────────────────────────────
 cat_time() {
-  current_time=$(date +%s)
-  elapsed=$((current_time - start_time))
-  remaining=$((duration - elapsed))
-
-  if (( remaining <= 0 )); then
-    echo
-    echo "💥 Le temps s'est écoulé ! Vous êtes piégé dans la boucle temporelle."
-    echo "Essayez 'remise zero' pour recommencer."
-    echo
-    solved=0
-  else
-    minutes=$((remaining / 60))
-    seconds=$((remaining % 60))
-    printf "\n⏳ Temps restant : %02d:%02d\n\n" "$minutes" "$seconds"
-  fi
+  ./temps
 }
 
 # ───────────────────────────────
@@ -94,15 +78,12 @@ while [[ $solved -eq 0 ]]; do
     help)
       afficher_aide
       ;;
-
     inspect)
       inspecter "$arg1"
       ;;
-
     ls)
       afficher_ls "$arg1"
       ;;
-
     cat)
       if [[ "$arg1" == "time" ]]; then
         cat_time
@@ -116,7 +97,6 @@ while [[ $solved -eq 0 ]]; do
         echo
       fi
       ;;
-
     solve)
       if [[ -n "$arg1" ]]; then
         ./verification_passe.sh "$arg1"
@@ -129,15 +109,13 @@ while [[ $solved -eq 0 ]]; do
         echo
       fi
       ;;
-
     remise)
       if [[ "$arg1" == "zero" ]]; then
         echo
         ./remise_zero.sh
         echo
+        date +%s > .start_time
         echo "🔄 Le module a été réinitialisé. Vous sentez le temps recommencer à s’écouler..."
-        solved=0
-        start_time=$(date +%s)
         sleep 1
         afficher_intro
       else
@@ -146,13 +124,11 @@ while [[ $solved -eq 0 ]]; do
         echo
       fi
       ;;
-
     quit)
       echo
       echo "Vous quittez le manoir..."
       break
       ;;
-
     *)
       echo
       echo "Commande inconnue. Tapez 'help' pour la liste des commandes."
@@ -161,11 +137,8 @@ while [[ $solved -eq 0 ]]; do
   esac
 done
 
-# ───────────────────────────────
-# Fin de partie
-# ───────────────────────────────
-
 if [[ $solved -eq 1 ]]; then
+  echo
   echo "🎉 Chapitre 1 réussi ! Le passage vers le Présent s'ouvre..."
 fi
 
