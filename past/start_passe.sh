@@ -1,11 +1,20 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-# Version finale – avec module temps séparé
+# Version finale – auto-configuration incluse
+
+# ───────────────────────────────
+# Préparation automatique
+# ───────────────────────────────
+
+# Donne les permissions d’exécution aux scripts nécessaires
+chmod +x ./temps 2>/dev/null
+chmod +x ./remise_zero.sh 2>/dev/null
+chmod +x ./verification_passe.sh 2>/dev/null
+
+# Initialise le temps de départ
+date +%s > .start_time
 
 solved=0  # 0 = pas résolu, 1 = énigme résolue
-
-# Initialisation du temps (fichier caché pour garder la valeur)
-date +%s > .start_time
 
 # ───────────────────────────────
 # Fonctions
