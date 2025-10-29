@@ -1,9 +1,12 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-# Version finale modulaire (avec vérification et remise à zéro externes)
+# Version avec affichage du temps réel
 
-time_left=30     # minutes virtuelles
 solved=0         # 0 = pas résolu, 1 = énigme résolue
+
+# Durée réelle du niveau (en secondes)
+duration=$((10 * 60))   # 10 minutes réelles 
+start_time=$(date +%s) # Heure réelle du lancement
 
 # ───────────────────────────────
 # Fonctions
@@ -57,10 +60,25 @@ afficher_ls() {
   echo
 }
 
+# ───────────────────────────────
+# Fonction temps réel
+# ───────────────────────────────
 cat_time() {
-  echo
-  echo "Horloge interne : $time_left minutes virtuelles restantes."
-  echo
+  current_time=$(date +%s)
+  elapsed=$((current_time - start_time))
+  remaining=$((duration - elapsed))
+
+  if (( remaining <= 0 )); then
+    echo
+    echo "💥 Le temps s'est écoulé ! Vous êtes piégé dans la boucle temporelle."
+    echo "Essayez 'remise zero' pour recommencer."
+    echo
+    solved=0
+  else
+    minutes=$((remaining / 60))
+    seconds=$((remaining % 60))
+    printf "\n⏳ Temps restant : %02d:%02d\n\n" "$minutes" "$seconds"
+  fi
 }
 
 # ───────────────────────────────
@@ -69,7 +87,7 @@ cat_time() {
 
 afficher_intro
 
-while [[ $time_left -gt 0 && $solved -eq 0 ]]; do
+while [[ $solved -eq 0 ]]; do
   read -p "> " cmd arg1 arg2
 
   case "$cmd" in
@@ -118,8 +136,8 @@ while [[ $time_left -gt 0 && $solved -eq 0 ]]; do
         ./remise_zero.sh
         echo
         echo "🔄 Le module a été réinitialisé. Vous sentez le temps recommencer à s’écouler..."
-        time_left=30
         solved=0
+        start_time=$(date +%s)
         sleep 1
         afficher_intro
       else
@@ -141,8 +159,6 @@ while [[ $time_left -gt 0 && $solved -eq 0 ]]; do
       echo
       ;;
   esac
-
-  ((time_left--))
 done
 
 # ───────────────────────────────
@@ -151,7 +167,5 @@ done
 
 if [[ $solved -eq 1 ]]; then
   echo "🎉 Chapitre 1 réussi ! Le passage vers le Présent s'ouvre..."
-elif [[ $time_left -le 0 ]]; then
-  echo "💥 Le temps s'effondre... Vous êtes piégé dans la boucle temporelle."
-  echo "Essayez 'remise zero' pour recommencer."
 fi
+
