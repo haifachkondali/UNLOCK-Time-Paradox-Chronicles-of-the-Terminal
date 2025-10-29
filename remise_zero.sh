@@ -1,6 +1,5 @@
 #!/bin/bash
-# UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-# Script externe – Remise à zéro du module
+# Script de remise à zéro du module
 
 clear
 echo "══════════════════════════════════════════════"
@@ -12,12 +11,9 @@ echo "Les engrenages se figent..."
 sleep 1
 echo "Puis s'inversent lentement, grinçant dans l'obscurité..."
 sleep 1
-echo
 echo "⌛ Les secondes se défont..."
 sleep 1
 echo "⌛ Les minutes reculent..."
-sleep 1
-echo "⌛ Les heures se réécrivent..."
 sleep 1
 echo
 echo "Une lumière dorée traverse la salle..."
