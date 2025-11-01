@@ -1,20 +1,17 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-# Version finale – auto-configuration incluse
+# Version finale – intégrée, interactive et immersive
 
 # ───────────────────────────────
 # Préparation automatique
 # ───────────────────────────────
-
-# Donne les permissions d’exécution aux scripts nécessaires
-chmod +x ./temps 2>/dev/null
 chmod +x ./remise_zero.sh 2>/dev/null
 chmod +x ./verification_passe.sh 2>/dev/null
 
-# Initialise le temps de départ
-date +%s > .start_time
-
-solved=0  # 0 = pas résolu, 1 = énigme résolue
+# Initialisation du temps réel
+duration=$((10 * 60))   # 10 minutes réelles
+start_time=$(date +%s)
+solved=0
 
 # ───────────────────────────────
 # Fonctions
@@ -38,12 +35,15 @@ afficher_intro() {
 afficher_aide() {
   echo
   echo "Commandes disponibles :"
-  echo "  inspect room       → observer la pièce"
-  echo "  ls [-a]            → voir les fichiers (avec -a pour voir les fichiers cachés)"
-  echo "  cat <fichier>      → lire un document ou un fichier virtuel (ex: cat time)"
-  echo "  solve <code>       → tenter une solution (vérifiée dans un module externe)"
-  echo "  remise zero        → remettre le jeu à zéro"
-  echo "  quit               → quitter le jeu"
+  echo "  inspect room           → observer la pièce"
+  echo "  ls [-a]                → voir les fichiers (avec -a pour voir les fichiers cachés)"
+  echo "  cat <fichier>          → lire un document"
+  echo "  grep <mot> <fichier>   → rechercher un mot dans un fichier (indice caché)"
+  echo "  echo <texte> > fichier → interagir avec un objet (ex: echo 12:00 > horloge.txt)"
+  echo "  solve <code>           → tenter une solution"
+  echo "  cat time               → afficher le temps restant"
+  echo "  remise zero            → remettre le jeu à zéro"
+  echo "  quit                   → quitter le jeu"
   echo
 }
 
@@ -51,13 +51,11 @@ inspecter() {
   if [[ "$1" == "room" ]]; then
     echo
     echo "Vous observez la pièce :"
-    echo "Une horloge, une table avec des papiers et une odeur de cire froide."
-    echo "Sur la table, un fichier mystérieux nommé 'time' semble surveiller les secondes..."
+    echo "Une horloge, une table avec des papiers, et une odeur de cire froide."
+    echo "Sur la table, un sablier semble mesurer le temps..."
     echo
   else
-    echo
     echo "Rien de particulier ici..."
-    echo
   fi
 }
 
@@ -70,8 +68,55 @@ afficher_ls() {
   echo
 }
 
+# ───────────────────────────────
+# Gestion du temps réel
+# ───────────────────────────────
 cat_time() {
-  ./temps
+  current_time=$(date +%s)
+  elapsed=$((current_time - start_time))
+  remaining=$((duration - elapsed))
+
+  if (( remaining <= 0 )); then
+    echo
+    echo "💥 Le temps s'est écoulé ! Vous êtes piégé dans la boucle temporelle."
+    echo "Essayez 'remise zero' pour recommencer."
+    echo
+    solved=0
+  else
+    minutes=$((remaining / 60))
+    seconds=$((remaining % 60))
+    printf "\n⏳ Temps restant : %02d:%02d\n\n" "$minutes" "$seconds"
+  fi
+}
+
+# ───────────────────────────────
+# Commandes UNIX simulées
+# ───────────────────────────────
+
+# Recherche d'un mot dans un fichier
+grep_file() {
+  if [[ -z "$1" || -z "$2" ]]; then
+    echo "Utilisation : grep <mot> <fichier>"
+    return
+  fi
+  if [[ ! -f "$2" ]]; then
+    echo "Fichier introuvable."
+    return
+  fi
+  echo
+  grep --color=never -i "$1" "$2" || echo "Aucun résultat trouvé."
+  echo
+}
+
+# Interaction avec un fichier (horloge)
+echo_text() {
+  if [[ "$1" == "12:00" && "$2" == ">" && "$3" == "horloge.txt" ]]; then
+    echo "🕰️ Vous remettez doucement les aiguilles à l'heure..."
+    sleep 1
+    echo "✅ L'horloge semble vibrer... Essayez maintenant 'solve 12:00'."
+  else
+    echo "Rien ne se passe..."
+  fi
 }
 
 # ───────────────────────────────
@@ -81,7 +126,7 @@ cat_time() {
 afficher_intro
 
 while [[ $solved -eq 0 ]]; do
-  read -p "> " cmd arg1 arg2
+  read -p "> " cmd arg1 arg2 arg3
 
   case "$cmd" in
     help)
@@ -101,10 +146,14 @@ while [[ $solved -eq 0 ]]; do
         cat "$arg1"
         echo
       else
-        echo
         echo "Fichier introuvable."
-        echo
       fi
+      ;;
+    grep)
+      grep_file "$arg1" "$arg2"
+      ;;
+    echo)
+      echo_text "$arg1" "$arg2" "$arg3"
       ;;
     solve)
       if [[ -n "$arg1" ]]; then
@@ -113,35 +162,25 @@ while [[ $solved -eq 0 ]]; do
           solved=1
         fi
       else
-        echo
         echo "Utilisation : solve <code>"
-        echo
       fi
       ;;
     remise)
       if [[ "$arg1" == "zero" ]]; then
-        echo
         ./remise_zero.sh
-        echo
-        date +%s > .start_time
-        echo "🔄 Le module a été réinitialisé. Vous sentez le temps recommencer à s’écouler..."
-        sleep 1
+        start_time=$(date +%s)
+        echo "🔄 Le module a été réinitialisé. Le temps recommence à s’écouler..."
         afficher_intro
       else
-        echo
         echo "Commande incomplète. Essayez : remise zero"
-        echo
       fi
       ;;
     quit)
-      echo
       echo "Vous quittez le manoir..."
       break
       ;;
     *)
-      echo
       echo "Commande inconnue. Tapez 'help' pour la liste des commandes."
-      echo
       ;;
   esac
 done
@@ -150,4 +189,3 @@ if [[ $solved -eq 1 ]]; then
   echo
   echo "🎉 Chapitre 1 réussi ! Le passage vers le Présent s'ouvre..."
 fi
-

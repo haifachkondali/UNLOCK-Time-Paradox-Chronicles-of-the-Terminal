@@ -1,0 +1,12 @@
+══════════════════════════════════════════════
+               SYSTEM LOG – DIAGNOSTIC
+══════════════════════════════════════════════
+
+ERREUR : Flux temporel désynchronisé.
+Protocole de réactivation : INCOMPLET
+Unité de temps attendue : calculée automatiquement.
+
+──────────────────────────────────────────────
+Message du système :
+“Le flux temporel ne répond qu’à la logique du calendrier.”
+══════════════════════════════════════════════

@@ -1,0 +1,11 @@
+══════════════════════════════════════════════
+                 HORLOGE DU MANOIR
+══════════════════════════════════════════════
+
+Les aiguilles sont figées.  
+Le verre est froid au toucher.  
+Une fine poussière s’est accumulée dans les engrenages.
+
+──────────────────────────────────────────────
+> Vous pouvez tenter de remettre l’heure :
+──────────────────────────────────────────────

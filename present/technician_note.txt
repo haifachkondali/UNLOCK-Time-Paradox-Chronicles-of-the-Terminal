@@ -1,0 +1,14 @@
+══════════════════════════════════════════════
+                NOTE DU TECHNICIEN
+══════════════════════════════════════════════
+
+Avant l’arrêt, j’ai compressé mes travaux.
+La séquence de réactivation s’y trouve, mais incomplète.
+
+Le système ne réagit que lorsque la fréquence du jour et du mois coïncident.
+J’ai verrouillé le cœur du flux sur une valeur obtenue en combinant ces deux rythmes.
+
+──────────────────────────────────────────────
+Indice discret :
+Le temps n’avance pas — ici, il se multiplie.
+══════════════════════════════════════════════
