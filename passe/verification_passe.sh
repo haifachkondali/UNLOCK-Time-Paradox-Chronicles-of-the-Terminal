@@ -1,6 +1,14 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
 # Script de vérification du code (solve)
+# Vérifie qu’un code a été saisi
+if [[ -z "$1" ]]; then
+  echo
+  echo "⚠️  Utilisation : ./verification_passe.sh <code>"
+  echo "Exemple : ./verification_passe.sh 12:00"
+  echo
+  exit 1
+fi
 
 # Récupération de la réponse du joueur
 reponse="$1"
