@@ -1,92 +1,93 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-# Version finale épurée et immersive
 
-# ───────────────────────────────
-# 1) Permissions automatiques
-# ───────────────────────────────
-find . -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null
-clear
+# Répertoire du script (robuste, où que l’on soit)
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1
 
-# ───────────────────────────────
-# 2) Vérification du dossier indices/
-# ───────────────────────────────
-if [[ ! -d "indices" ]]; then
+# 1) Vérification du dossier "indices/"
+if [[ ! -d "$SCRIPT_DIR/indices" ]]; then
   echo "══════════════════════════════════════════════"
   echo " ÉPOQUE : 1890 – Le manoir de l’horloger "
   echo "══════════════════════════════════════════════"
   echo
-  echo "Le manoir semble en désordre..."
-  echo "Des papiers sont éparpillés un peu partout."
-  echo "Vous sentez qu’il faut tout rassembler avant de pouvoir agir."
+  echo "Une pièce sombre... des papiers dispersés... un silence épais."
+  echo "Le manoir semble attendre que tout soit en ordre avant de parler."
   echo
-  echo "──────────────────────────────────────────────"
-  echo "Il vous manque quelque chose..."
+  echo "Les feuilles s’envolent doucement, cherchant un lieu où reposer."
+  echo "Peut-être qu’un endroit dédié à leurs secrets manque encore..."
+  echo
+  echo "Quand tout sera rangé, relancez ce script."
   echo
   exit 0
 fi
 
-# ───────────────────────────────
-# 3) Vérifie que des fichiers existent
-# ───────────────────────────────
-txt_count=$(find indices -maxdepth 1 -name "*.txt" | wc -l)
+# 2) Vérifie que le dossier contient des fichiers
+txt_count=$(find "$SCRIPT_DIR/indices" -maxdepth 1 -name "*.txt" | wc -l)
 if [[ $txt_count -eq 0 ]]; then
-  echo "Le silence règne... aucun document ne semble rangé."
-  echo "Vous sentez que les indices doivent être regroupés ailleurs."
+  echo "⚠️  Le manoir est silencieux..."
+  echo "Les souvenirs n’ont pas encore été rassemblés."
+  echo
+  echo "Quand tout sera prêt, relancez ce script."
+  echo
   exit 1
 fi
 
-# ───────────────────────────────
-# 4) Initialisation du temps réel
-# ───────────────────────────────
-duration=$((10 * 60))   # 10 minutes réelles
+# 3) Initialisation du temps réel
+duration=$((10 * 60))   # 10 minutes
 start_time=$(date +%s)
-mkdir -p indices
-: > indices/time  # créer le fichier du temps
+
+TIME_FILE="$SCRIPT_DIR/time"
+PID_FILE="$SCRIPT_DIR/.timer.pid"
+
+: > "$TIME_FILE"  # crée/efface le fichier de temps
 
 update_time_file() {
   while : ; do
     now=$(date +%s)
     rem=$(( duration - (now - start_time) ))
     if (( rem <= 0 )); then
-      printf "00:00\n" > indices/time
+      printf "00:00\n" > "$TIME_FILE"
+      echo -e "\n💥 Le temps s'est écoulé... Le manoir vous emprisonne à jamais.\n"
       break
     fi
     m=$(( rem/60 ))
     s=$(( rem%60 ))
-    printf "%02d:%02d\n" "$m" "$s" > indices/time
+    printf "%02d:%02d\n" "$m" "$s" > "$TIME_FILE"
     sleep 1
   done
 }
-update_time_file & TIMER_PID=$!
-trap 'kill "$TIMER_PID" 2>/dev/null' EXIT
 
-# ───────────────────────────────
-# 5) Introduction du jeu
-# ───────────────────────────────
+# Si un ancien timer tourne encore, on le coupe
+if [[ -f "$PID_FILE" ]]; then
+  oldpid="$(cat "$PID_FILE" 2>/dev/null)"
+  if [[ -n "$oldpid" ]] && kill -0 "$oldpid" 2>/dev/null; then
+    kill "$oldpid" 2>/dev/null
+    sleep 0.2
+  fi
+  rm -f "$PID_FILE"
+fi
+
+# Lance le timer en arrière-plan, enregistre son PID
+update_time_file & echo $! > "$PID_FILE"
+disown $(cat "$PID_FILE") 2>/dev/null
+
+# 4) Introduction du jeu
 clear
 echo "══════════════════════════════════════════════"
 echo " ÉPOQUE : 1890 – Le manoir de l’horloger "
 echo "══════════════════════════════════════════════"
 echo
-echo "Vous pénétrez dans le cœur du manoir..."
-echo "L’air est froid. Le silence pèse."
-echo "Une horloge immobile semble attendre quelque chose."
+echo "Le calme revient dans le manoir..."
+echo "Les papiers sont rangés, la poussière se dépose lentement."
+echo "Un souffle discret fait vibrer les engrenages de l’horloge."
+echo
+echo "Tout semble prêt. Le manoir vous observe."
+echo
+echo "⏳ Le temps s’écoule désormais..."
+echo "Vous pouvez vérifier le sablier avec :  cat time"
 echo
 echo "──────────────────────────────────────────────"
-echo "Les indices reposent désormais dans la pièce."
+echo "Bonne chance."
 echo "──────────────────────────────────────────────"
 echo
-sleep 2
-
-# ───────────────────────────────
-# 6) Passage dans le vrai shell Bash interactif
-# ───────────────────────────────
-cd indices || exit 1
-bash --rcfile <(echo "PS1='🕰️  PASSE> '")
-
-# ───────────────────────────────
-# 7) Fin du jeu
-# ───────────────────────────────
-echo
-echo "Le manoir retombe dans le silence..."
