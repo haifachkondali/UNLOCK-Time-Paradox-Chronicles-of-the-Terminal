@@ -1,40 +1,26 @@
 #!/bin/bash
-# UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-# Script de vérification du code (solve)
+# Vérifie la solution du joueur
 
-# Récupération de la réponse du joueur
 reponse="$1"
-
-# ───────────────────────────────
-# Vérification du code
-# ───────────────────────────────
 
 if [[ "$reponse" == "12:00" || "$reponse" == "12h00" || "$reponse" == "00:00" ]]; then
   echo
   echo "✅ Le code est correct."
-  echo "L'horloge commence à vibrer légèrement..."
+  echo "L'horloge commence à vibrer... tic... tac..."
   sleep 1
-  echo -n "⌛ tic..."; sleep 1
-  echo " tac..."
+  echo "🕰️ Le passé respire à nouveau !"
+  echo "Les engrenages reprennent vie, la poussière tombe..."
   sleep 1
-  echo -n "⌛ tic..."; sleep 1
-  echo " tac..."
-  sleep 1
-  echo
-  echo "🕰️ L'horloge se remet à tictaquer. Le passé respire à nouveau !"
-  echo "Les engrenages tournent... la poussière tombe... le temps se remet en marche."
   echo
   echo "🎉 Chapitre 1 réussi ! Le passage vers le Présent s'ouvre..."
-  echo "────────────────────────────────────────────────────────────"
-  echo
-  exit 0   # ✅ Code correct → signal de succès au script principal
+  pkill -P $$ 2>/dev/null
+  exit 0
 else
   echo
-  echo "❌ Code incorrect."
-  echo "Un bruit sourd résonne dans la pièce, l'horloge reste immobile..."
+  echo "❌ Mauvais code. L'horloge reste immobile..."
   echo "Les aiguilles vous narguent dans leur silence..."
-  echo
-  exit 1   # ❌ Mauvais code → signal d’échec au script principal
+  exit 1
 fi
+
 
 
