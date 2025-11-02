@@ -1,6 +1,5 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 1 : Le manoir de l’horloger
-<<<<<<< HEAD
 # Version finale épurée et immersive
 
 # ───────────────────────────────
