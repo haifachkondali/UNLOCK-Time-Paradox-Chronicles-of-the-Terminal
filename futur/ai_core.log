@@ -1,10 +1,10 @@
 ══════════════════════════════════════════════
-            TERMINAL PRINCIPAL
+              JOURNAL DU CŒUR IA
 ══════════════════════════════════════════════
 
-TERMINAL STATUS : AWAITING INPUT
+Expected value : PX-4098
+Received value : PX-4099
 
 ──────────────────────────────────────────────
-Pour activer la séquence :
-> ./verification_present.sh <code>
-──────────────────────────────────────────────
+Note : La divergence entre ces deux valeurs est la clé du rééquilibrage.
+══════════════════════════════════════════════

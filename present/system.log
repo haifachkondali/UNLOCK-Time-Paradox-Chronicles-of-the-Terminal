@@ -1,12 +1,20 @@
 ══════════════════════════════════════════════
-               SYSTEM LOG – DIAGNOSTIC
+            SYSTEM LOG – DIAGNOSTIC
 ══════════════════════════════════════════════
 
-ERREUR : Flux temporel désynchronisé.
-Protocole de réactivation : INCOMPLET
-Unité de temps attendue : calculée automatiquement.
+Initialisation du flux : OK  
+Chargement du module mémoire : OK  
+Moteur temporel : EN ATTENTE
 
-──────────────────────────────────────────────
+[LOG] Chrono_core lancé - PID ****  
+[LOG] Synchronisation interne instable  
+[INFO] Tentative de correction automatique...
+
+ERREUR : Processus "chrono_core" en boucle.  
+PID suspect : ****
+
+══════════════════════════════════════════════
 Message du système :
 “Le flux temporel ne répond qu’à la logique du calendrier.”
 ══════════════════════════════════════════════
+

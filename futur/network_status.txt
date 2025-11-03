@@ -1,10 +1,12 @@
 ══════════════════════════════════════════════
-            TERMINAL PRINCIPAL
+          ÉTAT DU FLUX TEMPOREL
 ══════════════════════════════════════════════
 
-TERMINAL STATUS : AWAITING INPUT
+Connexion au flux distant : INJOIGNABLE
+Dernier ping réussi : jamais
 
 ──────────────────────────────────────────────
-Pour activer la séquence :
-> ./verification_present.sh <code>
-──────────────────────────────────────────────
+Astuce :
+Le flux répond à celui qui ose l’appeler par son nom…
+Essaye d’interagir avec lui.
+══════════════════════════════════════════════

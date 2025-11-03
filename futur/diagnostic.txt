@@ -1,10 +1,13 @@
 ══════════════════════════════════════════════
-               DONNÉES SÉCURISÉES
+           DIAGNOSTIC DU SYSTÈME
 ══════════════════════════════════════════════
 
-Code partiel trouvé : PX-
-Complément stocké : dépend du temps lui-même.
+[ERREUR] Processus non autorisé détecté : quantum_core
+[ALERTE] L’unité de calcul surchauffe.
+[INFO] Une vérification des processus peut révéler le coupable.
 
 ──────────────────────────────────────────────
-Un indice est caché dans le calendrier du système.
+Astuce :
+Le système du futur murmure encore... 
+Peut-être qu’un simple “ps” te révélera son nom.
 ══════════════════════════════════════════════

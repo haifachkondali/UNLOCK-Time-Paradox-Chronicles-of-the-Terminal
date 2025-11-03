@@ -1,14 +1,19 @@
 ══════════════════════════════════════════════
-                NOTE DU TECHNICIEN
+           NOTE DU TECHNICIEN
 ══════════════════════════════════════════════
 
-Avant l’arrêt, j’ai compressé mes travaux.
-La séquence de réactivation s’y trouve, mais incomplète.
+Les journaux du système (system.log) devraient contenir la trace
+de la désynchronisation... mais rien ne s’affiche à première vue.
 
-Le système ne réagit que lorsque la fréquence du jour et du mois coïncident.
-J’ai verrouillé le cœur du flux sur une valeur obtenue en combinant ces deux rythmes.
+Je suis sûr que les ERREUR y sont, simplement... cachées dans le flot.
+Il faut les isoler, extraire uniquement ce qui ne fonctionne pas.
 
 ──────────────────────────────────────────────
+Le cœur du flux produit une erreur cyclique.
+Si je pouvais juste la retrouver dans les logs,
+je pourrais enfin l’arrêter...
+══════════════════════════════════════════════
 Indice discret :
 Le temps n’avance pas — ici, il se multiplie.
 ══════════════════════════════════════════════
+
