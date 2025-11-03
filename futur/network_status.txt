@@ -1,12 +1,11 @@
 ══════════════════════════════════════════════
-          ÉTAT DU FLUX TEMPOREL
+          NETWORK STATUS – Flux Temporel
 ══════════════════════════════════════════════
 
-Connexion au flux distant : INJOIGNABLE
-Dernier ping réussi : jamais
+[INFO] Connexion au réseau quantique : instable  
+[INFO] Adresse du relais de synchronisation : 8.8.8.8  
+[INFO] Taux de réponse : variable
 
 ──────────────────────────────────────────────
-Astuce :
-Le flux répond à celui qui ose l’appeler par son nom…
-Essaye d’interagir avec lui.
+Indice : Un simple “ping” pourrait révéler la présence du flux.
 ══════════════════════════════════════════════

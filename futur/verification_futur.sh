@@ -1,47 +1,54 @@
 #!/bin/bash
-# Vérification finale du module FUTUR
+# Vérification finale – Module FUTUR
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PID_FILE="$SCRIPT_DIR/.quantum_core.pid"
-CODE_EXPECTED="PX-4098"
+cd "$SCRIPT_DIR" || exit 1
+
+code="$1"
+PING_FILE="$SCRIPT_DIR/.ping_ok"
 
 echo
-echo "🔍 Analyse finale du flux quantique..."
+echo "🔍 Vérification finale du flux temporel..."
 sleep 1
 
-# 1) Vérifie si le processus quantum_core tourne encore
-if [[ -f "$PID_FILE" ]]; then
-  pid=$(cat "$PID_FILE")
-  if kill -0 "$pid" 2>/dev/null; then
-    echo "⚠️  Le processus 'quantum_core' est encore actif."
-    echo "Tuez-le avec : kill $pid"
-    echo
-    exit 1
-  fi
-fi
-
-# 2) Vérifie si la ligne critique est décommentée
-if ! grep -q "Protocole de redémarrage activé" "$SCRIPT_DIR/reboot_protocol.sh"; then
-  echo "⚠️  Le script n’a pas encore été corrigé."
-  echo "Modifiez-le avec : vi reboot_protocol.sh"
+# 1) Vérifie que le ping a bien fonctionné
+if [[ ! -f "$PING_FILE" ]]; then
+  echo "❌ Flux inactif. Aucun signal n’a été détecté."
+  echo "Le relais de synchronisation n’a pas répondu."
+  echo
+  echo "Indice : essaie peut-être d’établir un contact réseau..."
   echo
   exit 1
 fi
 
-# 3) Vérifie la clé finale
-if [[ "$1" == "$CODE_EXPECTED" ]]; then
-  echo "✅ Code accepté. Le flux quantique est stabilisé."
-  echo "🌐 Connexion restaurée. Le Futur est sauvé."
+# 2) Vérifie le code entré
+if [[ -z "$code" ]]; then
+  echo "⚠️  Utilisation : ./verification_futur.sh <code>"
+  exit 1
+fi
+
+if [[ "$code" == "FX-2048" || "$code" == "fx-2048" ]]; then
   echo
-  echo "💫 Le temps reprend son cours..."
-  echo "──────────────────────────────────────────────"
+  echo "PING flux_temporel (quantum.network): paquet temporel envoyé"
+  sleep 1
+  echo "Réponse : 42 ms – Synchronisation en cours..."
+  sleep 1
+  echo "Réponse : 41 ms – Flux détecté"
+  sleep 1
+  echo "✅ Le flux temporel répond enfin à ton appel."
+  sleep 1
+  echo "🔒 Code accepté – Réseau temporel stabilisé."
+  echo "Le futur se remet lentement en marche..."
   echo "✨ FIN DU CYCLE — LE FUTUR EST SAUVÉ"
   echo "“Mais le passé se souvient de toi…”"
   echo "──────────────────────────────────────────────"
-  rm -f "$PID_FILE"
+  echo
+  rm -f "$PING_FILE"
   exit 0
 else
-  echo "❌ Code incorrect. Essaie encore."
+  echo
+  echo "❌ Code incorrect. Le flux rejette la séquence."
+  echo "Le futur demeure figé dans le silence..."
   echo
   exit 1
 fi

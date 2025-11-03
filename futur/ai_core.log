@@ -7,4 +7,10 @@ Received value : PX-4099
 
 ──────────────────────────────────────────────
 Note : La divergence entre ces deux valeurs est la clé du rééquilibrage.
+
+Avant la désynchronisation, le technicien a laissé un *backup*
+des séquences de stabilisation.
+Les données originales ont été compactées dans une archive
+pour être restaurées en cas d’effondrement du flux.
+
 ══════════════════════════════════════════════
