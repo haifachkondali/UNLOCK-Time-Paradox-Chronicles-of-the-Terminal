@@ -45,7 +45,7 @@ update_time_file & echo $! > "$PID_FILE"
 disown $(cat "$PID_FILE") 2>/dev/null
 
 # Lancer un faux processus "chrono_core"
-bash "$SCRIPT_DIR/chrono_core.sh" & echo $! > "$SCRIPT_DIR/.chrono_core.pid"
+bash "$SCRIPT_DIR/06_chrono_core.sh" & echo $! > "$SCRIPT_DIR/.chrono_core.pid"
 
 echo
 echo "💡 Vous pouvez utiliser : ls, cat, grep, ps aux, kill, tar, cat time"

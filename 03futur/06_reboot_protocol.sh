@@ -3,7 +3,7 @@
 
 echo "🧠 Initialisation du cœur quantique..."
 sleep 1
-# echo "🔓 Protocole de redémarrage activé."
+echo "🔓 Protocole de redémarrage activé."
 sleep 1
 echo "⚠️  Erreur : ligne critique désactivée."
 sleep 1

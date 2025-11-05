@@ -1,2 +1,0 @@
-Séquence de redémarrage vérifiée.
-Le cœur du système répond à la clé : PX-4098

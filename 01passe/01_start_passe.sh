@@ -8,14 +8,14 @@ cd "$SCRIPT_DIR" || exit 1
 # 1) Vérification du dossier "indices/"
 if [[ ! -d "$SCRIPT_DIR/indices" ]]; then
   echo "══════════════════════════════════════════════"
-  echo " ÉPOQUE : 1890 – Le manoir de l’horloger "
+  echo " ÉPOQUE : 1890 – Le Château des Horloges "
   echo "══════════════════════════════════════════════"
   echo
   echo "Une pièce sombre... des papiers dispersés... un silence épais."
-  echo "Le manoir semble attendre que tout soit en ordre avant de parler."
+  echo "Le Le Château semble attendre que tout soit en ordre avant de parler."
   echo
   echo "Les feuilles s’envolent doucement, cherchant un lieu où reposer."
-  echo "Peut-être qu’un endroit dédié à leurs secrets manque encore..."
+  echo "Peut-être qu’un endroit " indices " dédié à leurs secrets manque encore..."
   echo
   echo "Quand tout sera rangé, relancez ce script."
   echo
@@ -48,7 +48,7 @@ update_time_file() {
     rem=$(( duration - (now - start_time) ))
     if (( rem <= 0 )); then
       printf "00:00\n" > "$TIME_FILE"
-      echo -e "\n💥 Le temps s'est écoulé... Le manoir vous emprisonne à jamais.\n"
+      echo -e "\n💥 Le temps s'est écoulé... Le Château vous emprisonne à jamais.\n"
       break
     fi
     m=$(( rem/60 ))
@@ -75,14 +75,14 @@ disown $(cat "$PID_FILE") 2>/dev/null
 # 4) Introduction du jeu
 clear
 echo "══════════════════════════════════════════════"
-echo " ÉPOQUE : 1890 – Le manoir de l’horloger "
+echo " ÉPOQUE : 1890 – Le Château des Horloges "
 echo "══════════════════════════════════════════════"
 echo
-echo "Le calme revient dans le manoir..."
+echo "Le calme revient dans le château..."
 echo "Les papiers sont rangés, la poussière se dépose lentement."
 echo "Un souffle discret fait vibrer les engrenages de l’horloge."
 echo
-echo "Tout semble prêt. Le manoir vous observe."
+echo "Tout semble prêt. Le château vous observe."
 echo
 echo "⏳ Le temps s’écoule désormais..."
 echo "Vous pouvez vérifier le sablier avec :  cat time"
