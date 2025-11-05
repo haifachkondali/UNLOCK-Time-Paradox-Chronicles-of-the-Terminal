@@ -1,16 +1,1 @@
-══════════════════════════════════════════════
-              HORLOGE DU CHATEAU
-══════════════════════════════════════════════
-
-L’aiguille oscille, indécise, entre deux instants.
-Les engrenages semblent tourner… à rebours.
-
-Une inscription gravée sur le cadran attire ton regard :
-« L’heure du salut se trouve dans son reflet. »
-
-──────────────────────────────────────────────
-Indice : Le temps ne s’écoule pas toujours dans un seul sens.
-Peut-être qu’une heure *miroir* détient la clé du passage.
-
-Format attendu : HH:MM
-──────────────────────────────────────────────
+12:00

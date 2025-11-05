@@ -64,8 +64,9 @@ START_TS=$(date +%s)
 # ───────────────────────────────
 (
   while : ; do
-    if ping 8.8.8.8 >/dev/null 2>&1 || ping -c 1 8.8.8.8 >/dev/null 2>&1; then
+    if ping 8.8.8.8 >/dev/null 2>&1; then
       echo "ok" > "$SCRIPT_DIR/.ping_ok"
+      echo "🌐 Signal détecté : le flux temporel répond à ton appel."
       break
     fi
     sleep 5
