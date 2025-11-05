@@ -1,14 +1,14 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 3 : Le Futur – L’Ordinateur Quantique
-# Version finale intégrée et immersive
+# Version finale stable et compatible VS Code / Git Bash
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR" || exit 1
 
 # ───────────────────────────────
-# 1) Préparation automatique de l’archive (si absente)
+# 1️⃣ Préparation automatique de l’archive (si absente)
 # ───────────────────────────────
-if [[ ! -f "$SCRIPT_DIR/data_archive.tar.gz" ]]; then
+if [[ ! -f "$SCRIPT_DIR/10_data_archive.tar.gz" ]]; then
   echo "📦 Restauration du paquet de données d'urgence..."
   echo "Complément du code final : PX-4098" > "$SCRIPT_DIR/quantum_key.txt"
   echo "Séquence de redémarrage vérifiée." > "$SCRIPT_DIR/secure_sequence.txt"
@@ -17,7 +17,7 @@ if [[ ! -f "$SCRIPT_DIR/data_archive.tar.gz" ]]; then
 fi
 
 # ───────────────────────────────
-# 2) Introduction immersive
+# 2️⃣ Introduction immersive
 # ───────────────────────────────
 clear
 echo "══════════════════════════════════════════════"
@@ -33,13 +33,14 @@ echo
 sleep 3
 
 # ───────────────────────────────
-# 3) Lancer le processus parasite
+# 3️⃣ Lancer le processus parasite (sans nohup)
 # ───────────────────────────────
-nohup bash "$SCRIPT_DIR/07_quantum_core.sh" >/dev/null 2>&1 & disown
-sleep 0.2
+bash "$SCRIPT_DIR/07_quantum_core.sh" &
+sleep 0.3
+echo "⚙️  Processus 'quantum_core' lancé en tâche de fond."
 
 # ───────────────────────────────
-# 4) Initialiser le timer (affichable via cat time)
+# 4️⃣ Initialiser le timer (affichable via cat time)
 # ───────────────────────────────
 DURATION=$((10 * 60))
 START_TS=$(date +%s)
@@ -60,11 +61,12 @@ START_TS=$(date +%s)
 ) &
 
 # ───────────────────────────────
-# Surveillance automatique du ping réussi (compatible Linux / Git Bash)
+# 5️⃣ Surveillance du ping (compatible Linux / Windows / Git Bash)
 # ───────────────────────────────
 (
   while : ; do
-    if ping 8.8.8.8 >/dev/null 2>&1; then
+    # essaie le ping Linux (-c 1), sinon ping Windows (-n 1)
+    if ping -c 1 8.8.8.8 >/dev/null 2>&1 || ping -n 1 8.8.8.8 >/dev/null 2>&1; then
       echo "ok" > "$SCRIPT_DIR/.ping_ok"
       echo "🌐 Signal détecté : le flux temporel répond à ton appel."
       break
@@ -73,9 +75,8 @@ START_TS=$(date +%s)
   done
 ) &
 
-
 # ───────────────────────────────
-# 6) Interface de jeu
+# 6️⃣ Interface de jeu
 # ───────────────────────────────
 echo
 echo "💡 Commandes utiles :"

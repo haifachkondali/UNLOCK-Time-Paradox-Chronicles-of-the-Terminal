@@ -10,9 +10,7 @@ echo
 echo "🔍 Analyse du flux temporel en cours..."
 sleep 1
 
-# ───────────────────────────────
 # Étape 1 — Vérifie que le processus chrono_core a bien été détruit
-# ───────────────────────────────
 if [[ ! -f "$PID_FILE" ]]; then
   echo "❌ Aucun fichier PID trouvé. Le cœur temporel semble absent ou corrompu."
   echo
@@ -32,18 +30,9 @@ else
   echo
 fi
 
-# ───────────────────────────────
 # Étape 2 — Vérifie si le technicien a bien été ajouté
-# ───────────────────────────────
-if [[ ! -f "$USERS_FILE" ]]; then
-  echo "❌ Le fichier des utilisateurs est introuvable."
-  echo "Impossible de confirmer l'ajout du technicien."
-  echo
-  exit 1
-fi
-
-if grep -qi "technician" "$USERS_FILE"; then
-  echo "✅ Le technicien a bien été ajouté au système."
+if id "technicien" &>/dev/null; then
+  echo "✅ L'utilisateur système 'technicien' a bien été ajouté."
   echo "L’accès au noyau du présent est restauré."
   echo
   echo "💫 Le présent est à nouveau stable. Les serveurs reprennent vie..."
@@ -54,7 +43,7 @@ if grep -qi "technician" "$USERS_FILE"; then
   exit 0
 else
   echo "❌ Aucun technicien détecté dans le système."
-  echo "Indice : essayez 'echo technician >> 04_users.conf'"
+  echo "Indice : ajoutez-le avec 'sudo adduser technicien'"
   echo
   exit 1
 fi
