@@ -4,7 +4,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PID_FILE="$SCRIPT_DIR/.quantum_core.pid"
 PING_FILE="$SCRIPT_DIR/.ping_ok"
-ARCHIVE_FILE="$SCRIPT_DIR/data_archive.tar.gz"
+ARCHIVE_FILE="$SCRIPT_DIR/08_data_archive.tar.gz"
 BACKUP_DIR="$SCRIPT_DIR/backup"
 CODE_EXPECTED="PX-4098"
 
