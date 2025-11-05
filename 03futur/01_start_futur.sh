@@ -12,7 +12,7 @@ if [[ ! -f "$SCRIPT_DIR/data_archive.tar.gz" ]]; then
   echo "📦 Restauration du paquet de données d'urgence..."
   echo "Complément du code final : PX-4098" > "$SCRIPT_DIR/quantum_key.txt"
   echo "Séquence de redémarrage vérifiée." > "$SCRIPT_DIR/secure_sequence.txt"
-  tar -czf "$SCRIPT_DIR/data_archive.tar.gz" -C "$SCRIPT_DIR" quantum_key.txt secure_sequence.txt
+  tar -czf "$SCRIPT_DIR/10_data_archive.tar.gz" -C "$SCRIPT_DIR" quantum_key.txt secure_sequence.txt
   rm -f "$SCRIPT_DIR/quantum_key.txt" "$SCRIPT_DIR/secure_sequence.txt"
 fi
 
@@ -35,7 +35,7 @@ sleep 3
 # ───────────────────────────────
 # 3) Lancer le processus parasite
 # ───────────────────────────────
-nohup bash "$SCRIPT_DIR/quantum_core.sh" >/dev/null 2>&1 & disown
+nohup bash "$SCRIPT_DIR/07_quantum_core.sh" >/dev/null 2>&1 & disown
 sleep 0.2
 
 # ───────────────────────────────
