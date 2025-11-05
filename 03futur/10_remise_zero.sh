@@ -47,13 +47,15 @@ if [[ -f "$REBOOT_FILE" ]]; then
   echo "♻️  Restauration du protocole de redémarrage..."
   cat > "$REBOOT_FILE" <<'EOF'
 #!/bin/bash
-# reboot_protocol.sh — Fichier système instable du futur
+# reboot_protocol.sh 
 
-echo "⚙️  Initialisation du protocole de redémarrage..."
+echo "🧠 Initialisation du cœur quantique..."
 sleep 1
-echo "Erreur : séquence interrompue."
-echo "Les données nécessaires semblent corrompues."
-# TODO: Protocole de redémarrage activé (à corriger par le joueur)
+# echo "🔓 Protocole de redémarrage activé."
+sleep 1
+echo "⚠️  Erreur : ligne critique désactivée."
+sleep 1
+echo "Pour réparer le protocole, éditez ce script."
 EOF
   chmod +x "$REBOOT_FILE"
 fi
