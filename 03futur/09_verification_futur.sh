@@ -4,6 +4,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PID_FILE="$SCRIPT_DIR/.quantum_core.pid"
 PING_FILE="$SCRIPT_DIR/.ping_ok"
+ARCHIVE_FILE="$SCRIPT_DIR/data_archive.tar.gz"
 BACKUP_DIR="$SCRIPT_DIR/backup"
 CODE_EXPECTED="PX-4098"
 
@@ -11,46 +12,37 @@ echo
 echo "🔍 Analyse finale du flux quantique..."
 sleep 1
 
-# 1️⃣ Vérifie si le processus parasite est toujours actif
+# 1️⃣ Vérifie si le processus parasite est détruit
 if [[ -f "$PID_FILE" ]]; then
   pid=$(cat "$PID_FILE")
   if kill -0 "$pid" 2>/dev/null; then
     echo "⚠️  Le processus 'quantum_core' est toujours actif."
-    echo "Tuez-le avec : kill \$(cat .quantum_core.pid)"
+    echo "Indice : utilisez → kill PID "
     echo
     exit 1
   fi
 fi
 
-# 2️⃣ Vérifie si le ping a réussi
+# 2️⃣ Vérifie si le ping manuel a réussi
 if [[ ! -f "$PING_FILE" ]]; then
-  echo "🌐 Aucune réponse du flux temporel détectée."
-  echo "Essayez un vrai ping : ping 8.8.8.8"
+  echo "🌐 Aucun signal réseau détecté."
+  echo "Astuce : utilisez → ping *.*.*.* > ___.txt"
   echo
   exit 1
 fi
 
-# 3️⃣ Vérifie que le joueur a extrait les données dans backup/
+# 3️⃣ Vérifie si l’archive a été extraite
 if [[ ! -d "$BACKUP_DIR" ]]; then
   echo "📦 Données non restaurées."
-  echo "Indice : crée un dossier 'backup' puis extrait l’archive avec :"
-  echo "  tar -xvzf data_archive.tar.gz -C backup"
+  echo "Astuce : utilisez → mkdir backup && tar -xvzf data_archive.tar.gz -C backup"
   echo
   exit 1
 fi
 
-if [[ ! -f "$BACKUP_DIR/quantum_key.txt" || ! -f "$BACKUP_DIR/secure_sequence.txt" ]]; then
-  echo "⚠️  Fichiers manquants dans le dossier backup."
-  echo "Vérifie que l’extraction s’est bien passée :"
-  echo "  ls backup/"
-  echo
-  exit 1
-fi
-
-# 4️⃣ Vérifie que la ligne critique est réactivée
+# 4️⃣ Vérifie le protocole de redémarrage
 if ! grep -q "Protocole de redémarrage activé" "$SCRIPT_DIR/06_reboot_protocol.sh" 2>/dev/null; then
-  echo "⚠️  Le script de redémarrage n’a pas encore été corrigé."
-  echo "Modifiez-le avec : vi 06_reboot_protocol.sh"
+  echo "⚠️  Le protocole n’a pas été réactivé."
+  echo "Astuce : éditez le fichier avec → vi ____.sh"
   echo
   exit 1
 fi
@@ -69,8 +61,9 @@ if [[ "$1" == "$CODE_EXPECTED" ]]; then
   rm -f "$PID_FILE" "$PING_FILE"
   exit 0
 else
-  echo
   echo "❌ Code incorrect. Essaie encore."
+  echo "Indice : le code se trouve dans l’archive extraite."
   echo
   exit 1
 fi
+
