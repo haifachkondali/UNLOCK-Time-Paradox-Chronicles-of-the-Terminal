@@ -8,11 +8,11 @@ cd "$SCRIPT_DIR" || exit 1
 # ───────────────────────────────
 # 1️⃣ Préparation automatique de l’archive (si absente)
 # ───────────────────────────────
-if [[ ! -f "$SCRIPT_DIR/data_archive.tar.gz" ]]; then
+if [[ ! -f "$SCRIPT_DIR/08_data_archive.tar.gz" ]]; then
   echo "📦 Restauration du paquet de données d'urgence..."
   echo "Complément du code final : PX-4098" > "$SCRIPT_DIR/quantum_key.txt"
   echo "Séquence de redémarrage vérifiée." > "$SCRIPT_DIR/secure_sequence.txt"
-  tar -czf "$SCRIPT_DIR/data_archive.tar.gz" -C "$SCRIPT_DIR" quantum_key.txt secure_sequence.txt
+  tar -czf "$SCRIPT_DIR/08_data_archive.tar.gz" -C "$SCRIPT_DIR" quantum_key.txt secure_sequence.txt
   rm -f "$SCRIPT_DIR/quantum_key.txt" "$SCRIPT_DIR/secure_sequence.txt"
 fi
 
