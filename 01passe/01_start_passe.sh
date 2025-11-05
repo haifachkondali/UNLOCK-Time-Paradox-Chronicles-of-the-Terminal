@@ -15,7 +15,7 @@ if [[ ! -d "$SCRIPT_DIR/indices" ]]; then
   echo "Le Le Château semble attendre que tout soit en ordre avant de parler."
   echo
   echo "Les feuilles s’envolent doucement, cherchant un lieu où reposer."
-  echo "Peut-être qu’un endroit " indices " dédié à leurs secrets manque encore..."
+  echo "Peut-être qu’un endroit ( indices ) dédié à leurs secrets manque encore..."
   echo
   echo "Quand tout sera rangé, relancez ce script."
   echo
