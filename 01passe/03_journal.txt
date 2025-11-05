@@ -16,7 +16,7 @@ Ils ont raison. J’y ai enfermé le battement du monde, et pourtant plus rien n
 J’ai noté sur un parchemin le code de mon système de lettres inversées.  
 Peut-être un jour quelqu’un en aura besoin pour comprendre.  
 Ce code est simple, presque enfantin, mais il protège mes secrets.  
-(motcle: miroir)
+(motcle: miroir) — *Le reflet du temps se cache peut-être dans un fichier invisible...*
 
 ──────────────────────────────────────────────
 
@@ -26,7 +26,8 @@ comme si elle attendait un signal que je ne comprends pas.
 Peut-être le reflet ? Peut-être le sablier ?  
 Seul le reflet garde la vérité, dit-on.  
 Mais où se trouve ce reflet ?  
-J’ai peur de regarder dans le miroir, de peur d’y voir ma fin.
+J’ai peur de regarder dans le miroir, de peur d’y voir ma fin.  
+*(Note dans la marge : “Sous la surface du répertoire, un nom qui commence par un point garde le secret.”)*
 
 ──────────────────────────────────────────────
 
@@ -43,7 +44,8 @@ Quand midi et minuit se confondent, le temps renaît.
 Si quelqu’un lit ces lignes, sachez que tout est dans le reflet.  
 Regardez ce que le miroir cache.  
 Quand vous trouverez le mot, écrivez-le dans l’horloge,  
-et le tic-tac reviendra.
+et le tic-tac reviendra.  
+*(Indice : cherchez un fichier dont le nom commence par un point — un miroir qui cache le temps.)*
 
 ──────────────────────────────────────────────
 
@@ -51,6 +53,8 @@ Notes griffonnées dans la marge :
 - La poussière recouvre tout.  
 - Le miroir n’est pas ce qu’il paraît.  
 - Le temps se mesure, mais il s’écoute aussi.  
-- N’oubliez pas de regarder sous la surface.
+- N’oubliez pas de regarder sous la surface.  
+  *(Sous la surface… ou sous les fichiers visibles ?)*
 
 ══════════════════════════════════════════════
+
