@@ -25,7 +25,7 @@ reponse="$1"
 if [[ ! -d "$INDICES_DIR" ]]; then
   echo
   echo "❌ Le dossier 'indices/' est introuvable."
-  echo "Le manoir reste plongé dans le désordre..."
+  echo "Le château reste plongé dans le désordre..."
   echo "Astuce : créez-le avec → mkdir indices"
   echo
   exit 1
@@ -38,7 +38,7 @@ txt_count=$(find "$INDICES_DIR" -maxdepth 1 -name "*.txt" | wc -l)
 if (( txt_count == 0 )); then
   echo
   echo "❌ Aucun fichier d’indice n’a été rangé dans le dossier."
-  echo "Le manoir murmure : 'Remets de l’ordre dans mes secrets...' "
+  echo "Le château murmure : 'Remets de l’ordre dans mes secrets...' "
   echo "Astuce : déplace les fichiers avec → mv *.txt indices/"
   echo
   exit 1
