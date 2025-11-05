@@ -12,7 +12,7 @@ if [[ ! -d "$SCRIPT_DIR/indices" ]]; then
   echo "══════════════════════════════════════════════"
   echo
   echo "Une pièce sombre... des papiers dispersés... un silence épais."
-  echo "Le Le Château semble attendre que tout soit en ordre avant de parler."
+  echo "Le Château semble attendre que tout soit en ordre avant de parler."
   echo
   echo "Les feuilles s’envolent doucement, cherchant un lieu où reposer."
   echo "Peut-être qu’un endroit ( indices ) dédié à leurs secrets manque encore..."

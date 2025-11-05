@@ -12,5 +12,5 @@ Lorsque la première rejoint la dernière,
 le cycle sera complet.
 
 ───────────────────────────────────────────────
-(Un murmure résonne : "La symétrie... le temps...")
+(Un murmure résonne : La symétrie... le temps...)
 ───────────────────────────────────────────────

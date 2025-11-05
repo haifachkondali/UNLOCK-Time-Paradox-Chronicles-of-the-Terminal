@@ -1,6 +1,6 @@
 #!/bin/bash
 # UNLOCK: Time Paradox – Chapitre 3 : Le Futur – L’Ordinateur Quantique
-# Version finale stable et compatible VS Code / Git Bash
+# Version Linux stable – by Haifa & ChatGPT 🧠
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR" || exit 1
@@ -8,11 +8,11 @@ cd "$SCRIPT_DIR" || exit 1
 # ───────────────────────────────
 # 1️⃣ Préparation automatique de l’archive (si absente)
 # ───────────────────────────────
-if [[ ! -f "$SCRIPT_DIR/10_data_archive.tar.gz" ]]; then
+if [[ ! -f "$SCRIPT_DIR/data_archive.tar.gz" ]]; then
   echo "📦 Restauration du paquet de données d'urgence..."
   echo "Complément du code final : PX-4098" > "$SCRIPT_DIR/quantum_key.txt"
   echo "Séquence de redémarrage vérifiée." > "$SCRIPT_DIR/secure_sequence.txt"
-  tar -czf "$SCRIPT_DIR/10_data_archive.tar.gz" -C "$SCRIPT_DIR" quantum_key.txt secure_sequence.txt
+  tar -czf "$SCRIPT_DIR/data_archive.tar.gz" -C "$SCRIPT_DIR" quantum_key.txt secure_sequence.txt
   rm -f "$SCRIPT_DIR/quantum_key.txt" "$SCRIPT_DIR/secure_sequence.txt"
 fi
 
@@ -33,11 +33,13 @@ echo
 sleep 3
 
 # ───────────────────────────────
-# 3️⃣ Lancer le processus parasite (sans nohup)
+# 3️⃣ Lancer le processus parasite
 # ───────────────────────────────
-bash "$SCRIPT_DIR/07_quantum_core.sh" &
-sleep 0.3
-echo "⚙️  Processus 'quantum_core' lancé en tâche de fond."
+nohup bash "$SCRIPT_DIR/07_quantum_core.sh" >/dev/null 2>&1 &
+sleep 0.2
+
+echo "💀 Processus 'quantum_core' lancé en tâche de fond."
+sleep 1
 
 # ───────────────────────────────
 # 4️⃣ Initialiser le timer (affichable via cat time)
@@ -54,14 +56,15 @@ START_TS=$(date +%s)
       echo "00:00" > "$SCRIPT_DIR/time"
       break
     fi
-    m=$(( rem/60 )); s=$(( rem%60 ))
+    m=$(( rem/60 ))
+    s=$(( rem%60 ))
     printf "%02d:%02d\n" "$m" "$s" > "$SCRIPT_DIR/time"
     sleep 1
   done
 ) &
 
 # ───────────────────────────────
-# 5️⃣ Surveillance du ping (compatible Linux / Windows / Git Bash)
+# 5️⃣ Surveillance du ping (version Linux)
 # ───────────────────────────────
 (
   while : ; do
@@ -73,7 +76,6 @@ START_TS=$(date +%s)
     sleep 5
   done
 ) &
-
 
 # ───────────────────────────────
 # 6️⃣ Interface de jeu
