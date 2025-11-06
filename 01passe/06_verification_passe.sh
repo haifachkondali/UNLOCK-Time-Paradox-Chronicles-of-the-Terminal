@@ -12,7 +12,7 @@ HORLOGE_FILE="$INDICES_DIR/02_horloge.txt"
 if [[ -z "$1" ]]; then
   echo
   echo "⚠️  Utilisation : ./07_verification_passe.sh <code>"
-  echo "Exemple : ./07_verification_passe.sh 12:00"
+  echo "Exemple : ./07_verification_passe.sh HH:MM"
   echo
   exit 1
 fi
