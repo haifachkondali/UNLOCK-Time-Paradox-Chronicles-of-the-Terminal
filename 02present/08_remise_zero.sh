@@ -9,7 +9,7 @@ TIME_FILE="$SCRIPT_DIR/time"
 PID_FILE="$SCRIPT_DIR/.present_timer.pid"
 CORE_PID_FILE="$SCRIPT_DIR/.chrono_core.pid"
 USERS_FILE="$SCRIPT_DIR/04_users.conf"
-CHRONO_SCRIPT="$SCRIPT_DIR/06_chrono_core.sh"
+CHRONO_SCRIPT="$SCRIPT_DIR/.05_chrono_core.sh"
 
 echo "🔄 Réinitialisation du module Présent..."
 sleep 1

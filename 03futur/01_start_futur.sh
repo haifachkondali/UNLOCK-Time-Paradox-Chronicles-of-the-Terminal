@@ -35,7 +35,7 @@ sleep 3
 # ───────────────────────────────
 # 3️⃣ Lancer le processus parasite
 # ───────────────────────────────
-nohup bash "$SCRIPT_DIR/07_quantum_core.sh" >/dev/null 2>&1 &
+nohup bash "$SCRIPT_DIR/.07_quantum_core.sh" >/dev/null 2>&1 &
 sleep 0.2
 
 echo "💀 Processus 'quantum_core' lancé en tâche de fond."
