@@ -1,6 +1,5 @@
 #!/bin/bash
-# UNLOCK: Time Paradox – Chapitre 2 : Le Présent – Le Laboratoire Éteint
-# Vérification finale du module PRÉSENT
+# UNLOCK: Time Paradox – Chapitre 2 : Le Présent – Vérification finale
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PID_FILE="$SCRIPT_DIR/.chrono_core.pid"
@@ -10,24 +9,24 @@ echo
 echo "🔍 Analyse du flux temporel en cours..."
 sleep 1
 
-# Étape 1 — Vérifie que le processus chrono_core a bien été détruit
-if [[ ! -f "$PID_FILE" ]]; then
-  echo "❌ Aucun fichier PID trouvé. Le cœur temporel semble absent ou corrompu."
-  echo
-  exit 1
-fi
+# ───────────────────────────────
+# Étape 1 — Vérifie le processus ChronoCore
+# ───────────────────────────────
 
-PID=$(cat "$PID_FILE")
-
-if kill -0 "$PID" 2>/dev/null; then
-  echo "⚠️  Le processus 'chrono_core' est toujours actif."
-  echo "Indice : utilisez 'kill $PID' pour le neutraliser."
-  echo
-  exit 1
+# Si le fichier PID existe encore :
+if [[ -f "$PID_FILE" ]]; then
+  PID=$(cat "$PID_FILE" 2>/dev/null)
+  if kill -0 "$PID" 2>/dev/null; then
+    echo "⚠️  Le processus 'chrono_core' est toujours actif."
+    echo "Indice : utilisez 'kill $PID' pour le neutraliser."
+    echo
+    exit 1
+  else
+    echo "✅ Le processus 'chrono_core' est bien arrêté."
+    rm -f "$PID_FILE"
+  fi
 else
-  echo "✅ Processus 'chrono_core' arrêté avec succès."
-  echo "Le flux commence à se stabiliser..."
-  echo
+  echo "✅ Aucun fichier PID trouvé — le processus a été détruit."
 fi
 
 # Étape 2 — Vérifie si le technicien a bien été ajouté
