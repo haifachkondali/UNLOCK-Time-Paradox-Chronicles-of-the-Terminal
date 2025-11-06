@@ -13,7 +13,7 @@ TIME_FILE="$SCRIPT_DIR/time"
 PING_FILE="$SCRIPT_DIR/.ping_ok"
 BACKUP_DIR="$SCRIPT_DIR/backup"
 REBOOT_FILE="$SCRIPT_DIR/06_reboot_protocol.sh"
-ARCHIVE_FILE="$SCRIPT_DIR/08_data_archive.tar.gz"
+ARCHIVE_FILE="$SCRIPT_DIR/07_data_archive.tar.gz"
 
 # ───────────────────────────────
 # 1️⃣ Stoppe le processus parasite s'il reste
@@ -74,7 +74,7 @@ fi
 # ───────────────────────────────
 # 6️⃣ Relance le Quantum Core pour un nouveau cycle
 # ───────────────────────────────
-nohup bash "$SCRIPT_DIR/07_quantum_core.sh" >/dev/null 2>&1 &
+nohup bash "$SCRIPT_DIR/.07_quantum_core.sh" >/dev/null 2>&1 &
 sleep 0.5
 echo "⚙️  Quantum Core relancé pour un nouveau cycle."
 

@@ -34,7 +34,7 @@ fi
 if [[ ! -d "$BACKUP_DIR" ]]; then
   echo "📦 Données non restaurées."
   echo "Indice : crée un dossier 'backup' puis extrait l’archive avec :"
-  echo "  tar -xvzf data_archive.tar.gz -C backup"
+  echo "  tar "
   echo
   exit 1
 fi
