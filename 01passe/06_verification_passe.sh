@@ -11,8 +11,8 @@ HORLOGE_FILE="$INDICES_DIR/02_horloge.txt"
 # ───────────────────────────────
 if [[ -z "$1" ]]; then
   echo
-  echo "⚠️  Utilisation : ./07_verification_passe.sh <code>"
-  echo "Exemple : ./07_verification_passe.sh HH:MM"
+  echo "⚠️  Utilisation : ./06_verification_passe.sh <code>"
+  echo "Exemple : ./06_verification_passe.sh HH:MM"
   echo
   exit 1
 fi
@@ -26,7 +26,7 @@ if [[ ! -d "$INDICES_DIR" ]]; then
   echo
   echo "❌ Le dossier 'indices/' est introuvable."
   echo "Le château reste plongé dans le désordre..."
-  echo "Astuce : créez-le avec → mkdir indices"
+  echo "Astuce : créez-le avec → mkdir "
   echo
   exit 1
 fi
@@ -39,7 +39,7 @@ if (( txt_count == 0 )); then
   echo
   echo "❌ Aucun fichier d’indice n’a été rangé dans le dossier."
   echo "Le château murmure : 'Remets de l’ordre dans mes secrets...' "
-  echo "Astuce : déplace les fichiers avec → mv *.txt indices/"
+  echo "Astuce : déplace les fichiers avec → mv"
   echo
   exit 1
 fi
@@ -59,7 +59,7 @@ contenu="$(cat "$HORLOGE_FILE" | tr -d '[:space:]')"  # retire espaces et retour
 if [[ "$contenu" != "12:00" && "$contenu" != "00:00" ]]; then
   echo
   echo "❌ L’horloge n’indique pas la bonne heure."
-  echo "Astuce : utilisez la commande → echo \"HH:MM\" > indices/02_horloge.txt"
+  echo "Astuce : utilisez la commande → echo \"HH:MM\" "
   echo
   exit 1
 fi

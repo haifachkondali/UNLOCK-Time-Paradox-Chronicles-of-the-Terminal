@@ -54,7 +54,7 @@ fi
 
 # 4) Nettoyage des indices (si existait)
 if [[ -d "$SCRIPT_DIR/indices" ]]; then
-  echo "🧹 Le manoir efface toute trace du précédent voyage..."
+  echo "🧹 Le chateau efface toute trace du précédent voyage..."
   sleep 1
   mv "$SCRIPT_DIR"/indices/*.txt "$SCRIPT_DIR"/ 2>/dev/null
   rm -rf "$SCRIPT_DIR/indices"

@@ -50,7 +50,7 @@ fi
 # 4️⃣ Vérifie que la ligne critique est réactivée
 if ! grep -q "Protocole de redémarrage activé" "$SCRIPT_DIR/06_reboot_protocol.sh" 2>/dev/null; then
   echo "⚠️  Le script de redémarrage n’a pas encore été corrigé."
-  echo "Modifiez-le avec : vi 06_reboot_protocol.sh"
+  echo "Modifiez-le avec : vi "
   echo
   exit 1
 fi

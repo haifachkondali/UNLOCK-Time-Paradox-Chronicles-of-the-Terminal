@@ -18,7 +18,7 @@ if [[ -f "$PID_FILE" ]]; then
   PID=$(cat "$PID_FILE" 2>/dev/null)
   if kill -0 "$PID" 2>/dev/null; then
     echo "⚠️  Le processus 'chrono_core' est toujours actif."
-    echo "Indice : utilisez 'kill $PID' pour le neutraliser."
+    echo "Indice : utilisez 'kill PID pour le neutraliser."
     echo
     exit 1
   else
@@ -42,7 +42,7 @@ if id "technicien" &>/dev/null; then
   exit 0
 else
   echo "❌ Aucun technicien détecté dans le système."
-  echo "Indice : ajoutez-le avec 'sudo adduser technicien'"
+  echo "Indice : ajoutez-le avec 'sudo adduser '"
   echo
   exit 1
 fi
