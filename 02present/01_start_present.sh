@@ -44,14 +44,8 @@ update_time_file() {
 update_time_file & echo $! > "$PID_FILE"
 disown $(cat "$PID_FILE") 2>/dev/null
 
-# ───────────────────────────────
-# 3️⃣ Lancer le processus parasite
-# ───────────────────────────────
-nohup bash "$SCRIPT_DIR/.05_chrono_core.sh" >/dev/null 2>&1 &
-sleep 0.2
-
-echo "💀 Processus 'Chrono_core' lancé en tâche de fond."
-sleep 1
+# Lancer un faux processus "chrono_core"
+bash "$SCRIPT_DIR/06_chrono_core.sh" & echo $! > "$SCRIPT_DIR/.chrono_core.pid"
 
 echo
 echo "💡 Vous pouvez utiliser : ls, cat, grep, ps aux, kill, tar, cat time"

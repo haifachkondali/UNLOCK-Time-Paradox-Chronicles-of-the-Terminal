@@ -1,5 +1,6 @@
 #!/bin/bash
 # quantum_core.sh – Processus parasite du futur (version stable)
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PIDFILE="$SCRIPT_DIR/.quantum_core.pid"
 
