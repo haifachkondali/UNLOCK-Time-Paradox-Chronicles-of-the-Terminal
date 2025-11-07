@@ -11,7 +11,7 @@ Mais attention : tu n’as que 30 minutes virtuelles (un timer) avant la “bouc
 
 
 
-🧭 MANUEL DES COMMANDES — Chronicles of the Terminal
+# 🧭 MANUEL DES COMMANDES — Chronicles of the Terminal
 « Le Terminal est ton seul outil.
  Chaque commande est un pas vers la maîtrise du temps. »
 
