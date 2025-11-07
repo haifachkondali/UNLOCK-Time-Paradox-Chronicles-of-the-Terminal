@@ -21,7 +21,17 @@ if [[ -f "$PID_FILE" ]]; then
   fi
   rm -f "$PID_FILE"
 fi
-
+# 4) Nettoyage des indices (si existait)
+if [[ -d "$SCRIPT_DIR/indices" ]]; then
+  echo "🧹 Le chateau efface toute trace du précédent voyage..."
+  sleep 1
+  mv "$SCRIPT_DIR"/indices/*.txt "$SCRIPT_DIR"/ 2>/dev/null
+  rm -rf "$SCRIPT_DIR/indices"
+  sleep 1
+else
+  echo "⚠️  Aucun souvenir à effacer... Le château semble déjà vide."
+  sleep 1
+fi
 # 2) Réinitialiser le temps (valeur affichée au prochain lancement)
 echo "10:00" > "$TIME_FILE"
 
@@ -52,17 +62,7 @@ else
   echo "⚠️  Fichier d’horloge manquant, rien à restaurer."
 fi
 
-# 4) Nettoyage des indices (si existait)
-if [[ -d "$SCRIPT_DIR/indices" ]]; then
-  echo "🧹 Le chateau efface toute trace du précédent voyage..."
-  sleep 1
-  mv "$SCRIPT_DIR"/indices/*.txt "$SCRIPT_DIR"/ 2>/dev/null
-  rm -rf "$SCRIPT_DIR/indices"
-  sleep 1
-else
-  echo "⚠️  Aucun souvenir à effacer... Le château semble déjà vide."
-  sleep 1
-fi
+
 
 echo
 echo "⏳ Le sablier se renverse..."
