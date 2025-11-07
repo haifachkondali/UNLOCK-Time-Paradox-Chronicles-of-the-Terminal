@@ -188,5 +188,11 @@ Remet tous les fichiers et processus à leur état d’origine.
  Chaque action modifie le temps.
  Et toi, voyageur… sauras-tu exécuter le bon ordre ?”
 
+# 🎮 Ce que j’ai retenu de ce projet ( Petit retour )
+
+J’ai vraiment aimé coder ce jeu. C’était un projet à la fois technique et créatif, et j’y ai mis beaucoup d’énergie. J’ai utilisé ChatGPT pour m’aider à avancer : parfois, il m’a fait gagner beaucoup de temps, mais d’autres fois, il m’a un peu fait reculer, car certaines réponses n’étaient pas tout à fait justes. J’ai donc appris à ne pas juste copier, mais à comprendre le code par moi-même.
+J’ai compris pas mal de choses, j’ai modifié des parties, mais il reste encore des zones floues — par exemple, la boucle du processus parasite et la création du fichier PID. Il y a aussi eu quelques bugs, surtout avec les fichiers ChronoCore et QuantumCore dans les modules du Présent et du Futur. Le code n’est pas toujours parfaitement optimisé, mais il fonctionne et raconte une histoire.
+Ce que je pourrais améliorer, c’est surtout la gestion du temps et l’organisation de mon travail. Malgré tout, j’ai adoré développer Chronicles of the Terminal, et j’ai fait de mon mieux à chaque étape.
+
 
 
